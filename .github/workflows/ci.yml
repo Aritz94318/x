@@ -23,7 +23,8 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
           cache: 'maven'
-
+      - name: Clean Maven local repository
+        run: mvn clean install -DskipTests
       - name: Build and SonarCloud Analysis
         working-directory: ./demo
         env:
