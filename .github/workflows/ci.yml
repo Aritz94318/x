@@ -33,7 +33,7 @@ jobs:
         with:
           projectBaseDir: ./demo
           args: >
-            -Dsonar.organization=x
+            -Dsonar.organization=aritz94318
             -Dsonar.projectKey=aritz94318_x
             -Dsonar.java.binaries=target/classes
         env:
