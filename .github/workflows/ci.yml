@@ -26,6 +26,15 @@ jobs:
 
       - name: Build and SonarCloud Analysis
         working-directory: ./demo
-        run: mvn clean verify sonar:sonar -Dsonar.projectKey=Aritz94318_x -Dsonar.organization=aritz94318 -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=${{ secrets.SONAR_TOKEN }}
-     
-
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: |
+          mvn clean verify sonar:sonar \
+            -Dsonar.projectKey=Aritz94318_x \
+            -Dsonar.organization=aritz94318 \
+            -Dsonar.host.url=https://sonarcloud.io \
+            -Dsonar.login=$SONAR_TOKEN \
+            -Dsonar.qualitygate.wait=true \
+            -Dsonar.pullrequest.key=${{ github.event.pull_request.number }} \
+            -Dsonar.pullrequest.branch=${{ github.head_ref }} \
+            -Dsonar.pullrequest.base=${{ github.base_ref }}
