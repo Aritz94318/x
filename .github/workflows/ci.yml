@@ -25,13 +25,13 @@ jobs:
           cache: 'maven'
 
       - name: Build with Maven
-        working-directory: ./crud_rest_db
+        working-directory: ./demo
         run: mvn -B clean verify
 
       - name: SonarQube Scan
         uses: sonarsource/sonarqube-scan-action@master
         with:
-          projectBaseDir: ./crud_rest_db
+          projectBaseDir: ./demo
           args: >
             -Dsonar.organization=x
             -Dsonar.projectKey=aritz94318_x
