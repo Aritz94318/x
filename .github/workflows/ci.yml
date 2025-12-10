@@ -1,4 +1,4 @@
-name: CI/CD workflow for Maven Build and Sonar Code scan
+name: CI/CD workflow for Maven Build and SonarCloud Scan
 
 on:
   pull_request:
@@ -24,21 +24,6 @@ jobs:
           java-version: '17'
           cache: 'maven'
 
-      - name: Build with Maven
-        working-directory: ./demo
-        run: mvn -B clean verify
-
-      - name: SonarQube Scan
-        uses: sonarsource/sonarqube-scan-action@master
-        with:
-          projectBaseDir: ./demo
-          args: >
-            -Dsonar.organization=aritz94318
-            -Dsonar.projectKey=aritz94318_x
-            -Dsonar.java.binaries=target/classes
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          
       - name: Build and SonarCloud Analysis
         working-directory: ./demo
         run: mvn clean verify sonar:sonar \
@@ -46,4 +31,3 @@ jobs:
             -Dsonar.organization=aritz94318 \
             -Dsonar.host.url=https://sonarcloud.io \
             -Dsonar.login=${{ secrets.SONAR_TOKEN }}
-
