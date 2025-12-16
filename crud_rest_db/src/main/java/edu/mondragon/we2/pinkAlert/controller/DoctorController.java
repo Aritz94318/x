@@ -71,7 +71,7 @@ public class DoctorController {
 
         List<DatePill> datePills = IntStream.rangeClosed(0, 5)
                 .mapToObj(offset -> {
-                    LocalDate date = today.minusDays(5 - offset);
+                    LocalDate date = today.minusDays(5L - offset);
 
                     long daysDiff = ChronoUnit.DAYS.between(date, today);
 

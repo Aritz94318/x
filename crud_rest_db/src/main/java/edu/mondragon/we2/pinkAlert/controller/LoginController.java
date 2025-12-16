@@ -19,17 +19,17 @@ public class LoginController {
     @PostMapping("/login")
     public String processLogin(
             @RequestParam("username") String username,
-            @RequestParam("password") String password,
+            @RequestParam("password") String secret,
             Model model) {
 
         // Dummy login logic – replace with real auth later
-        if (username.equals("doctor") && password.equals("123")) {
+        if (username.equals("doctor") && secret.equals("123")) {
             return "redirect:/doctor/dashboard";
         }
-        if (username.equals("patient") && password.equals("123")) {
+        if (username.equals("patient") && secret.equals("123")) {
             return "redirect:/patient/portal";
         }
-        if (username.equals("admin") && password.equals("123")) {
+        if (username.equals("admin") && secret.equals("123")) {
             return "redirect:/admin/dashboard";
         }
 
