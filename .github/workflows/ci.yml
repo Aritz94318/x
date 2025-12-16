@@ -25,7 +25,7 @@ jobs:
           cache: 'maven'
 
       - name: Build and SonarCloud Analysis
-        working-directory: ./demo
+        working-directory: ./crud_rest_db
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
